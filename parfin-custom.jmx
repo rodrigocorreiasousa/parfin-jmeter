@@ -5,11 +5,13 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Parfin Custody UAT">
         <boolProp name="ThreadGroup.delayedStart">true</boolProp>
-        <intProp name="ThreadGroup.num_threads">3</intProp>
+        <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
         <longProp name="ThreadGroup.duration">0</longProp>
         <longProp name="ThreadGroup.delay">5</longProp>
@@ -48,6 +50,21 @@
               <stringProp name="Argument.value">0x81ED9c6776E28BB1eBB575CF8d051D097E34E457</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
+            <elementProp name="create_duplicata_prefix" elementType="Argument">
+              <stringProp name="Argument.name">create_duplicata_prefix</stringProp>
+              <stringProp name="Argument.value">0x23cd24c40000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000016000000000000000000000000000000000000000000000000000000000000001a000000000000000000000000000000000000000000000000000000000000003e800000000000000000000000000000000000000000000000000000000000003e8000000000000000000000000000000000000000000000000000001938e37b008000000000000000000000000000000000000000000000000000001938e37b0080000000000000000000000000000000000000000000000000000000000000001</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="create_duplicata_sufix" elementType="Argument">
+              <stringProp name="Argument.name">create_duplicata_sufix</stringProp>
+              <stringProp name="Argument.value">0000000000000000000000000000000000000000000000000000000000000015456d6973736f725f313733323830363836303239330000000000000000000000000000000000000000000000000000000000000000000000000000000000001453616361646f5f31373332383036383630323933000000000000000000000000</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="create_teleport_prefix" elementType="Argument">
+              <stringProp name="Argument.name">create_teleport_prefix</stringProp>
+              <stringProp name="Argument.value">0x8bf7ea5b000000000000000000000000723c5ff19d40e0f605e28b8a35258e73c7910942000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000927c30000000000000000000000000000000000000000000000000000000000000080</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
           </collectionProp>
         </Arguments>
         <hashTree/>
@@ -57,7 +74,7 @@
           <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
         </CookieManager>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Authorize">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Authorize" enabled="true">
           <intProp name="HTTPSampler.connect_timeout">60000</intProp>
           <intProp name="HTTPSampler.response_timeout">60000</intProp>
           <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
@@ -114,7 +131,7 @@
           </JSONPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Wallet" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Wallet">
           <intProp name="HTTPSampler.connect_timeout">60000</intProp>
           <intProp name="HTTPSampler.response_timeout">60000</intProp>
           <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
@@ -140,7 +157,7 @@
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="Content-Type" elementType="Header">
                 <stringProp name="Header.name">Content-Type</stringProp>
@@ -176,7 +193,7 @@
             <stringProp name="JSONPostProcessor.defaultValues">withoutwalletid</stringProp>
           </JSONPostProcessor>
           <hashTree/>
-          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="wallet_destination_address" enabled="true">
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="wallet_destination_address">
             <stringProp name="JSONPostProcessor.referenceNames">wallet_destination_address</stringProp>
             <stringProp name="JSONPostProcessor.jsonPathExprs">$[0].[&apos;address&apos;]</stringProp>
             <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
@@ -184,7 +201,7 @@
           </JSONPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Wallet By Address" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Wallet By Address">
           <intProp name="HTTPSampler.connect_timeout">60000</intProp>
           <intProp name="HTTPSampler.response_timeout">60000</intProp>
           <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
@@ -199,7 +216,7 @@
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="Content-Type" elementType="Header">
                 <stringProp name="Header.name">Content-Type</stringProp>
@@ -257,7 +274,7 @@
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="Content-Type" elementType="Header">
                 <stringProp name="Header.name">Content-Type</stringProp>
@@ -286,7 +303,7 @@
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="txHashMint" enabled="true">
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="txHashMint">
             <stringProp name="JSONPostProcessor.referenceNames">txHashMint</stringProp>
             <stringProp name="JSONPostProcessor.jsonPathExprs">txHash</stringProp>
             <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
@@ -301,8 +318,10 @@
             <stringProp name="script">import java.util.Random;
 
 // Definições de variáveis
-String create_duplicata_prefix = &apos;0x23cd24c40000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000016000000000000000000000000000000000000000000000000000000000000001a000000000000000000000000000000000000000000000000000000000000003e800000000000000000000000000000000000000000000000000000000000003e80000000000000000000000000000000000000000000000000000019373565e050000000000000000000000000000000000000000000000000000019373565e050000000000000000000000000000000000000000000000000000000000000001000000000000000000000000723c5ff19d40e0f605e28b8a35258e73c7910942&apos;;
-String create_duplicata_sufix = &apos;0000000000000000000000000000000000000000000000000000000000000015456d6973736f725f313733323830363836303239330000000000000000000000000000000000000000000000000000000000000000000000000000000000001453616361646f5f31373332383036383630323933000000000000000000000000&apos;;
+String create_duplicata_prefix = &apos;${create_duplicata_prefix}&apos;;
+String create_duplicata_sufix = &apos;${create_duplicata_sufix}&apos;;
+String wallet_destination_address = &apos;${wallet_destination_address}&apos;;
+
 
 String id_duplicata = String.format(&quot;%x&quot;, System.currentTimeMillis());
 StringBuilder hexString = new StringBuilder();
@@ -310,18 +329,22 @@ StringBuilder hexString = new StringBuilder();
       hexString.append(String.format(&quot;%02x&quot;, (int) c));
     }
 String id_ascii_hex_without0 = hexString.toString();
+String wallet_address_without_0x = wallet_destination_address.substring(2);
+String wallet_address_64 = &quot;000000000000000000000000&quot; + wallet_address_without_0x;
 String id_lenth = String.format(&quot;%064x&quot;, id_ascii_hex_without0.length());
 String id_ascii_hex = String.format(&quot;%-64s&quot;, id_ascii_hex_without0).replace(&apos; &apos;, &apos;0&apos;);
 
 String id_duplicata_custom = id_lenth + id_ascii_hex;
-String id_duplicata_full = create_duplicata_prefix + id_duplicata_custom + create_duplicata_sufix;
+
+String id_duplicata_full = create_duplicata_prefix + wallet_address_64 + id_duplicata_custom + create_duplicata_sufix;
+
 
 vars.put(&quot;id_duplicata_custom&quot;, id_duplicata_custom);
 vars.put(&quot;id_duplicata_full&quot;, id_duplicata_full);</stringProp>
           </JSR223PreProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Transaction Receipt Duplicata By Hash" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Transaction Receipt Duplicata By Hash">
           <intProp name="HTTPSampler.connect_timeout">60000</intProp>
           <intProp name="HTTPSampler.response_timeout">60000</intProp>
           <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
@@ -367,7 +390,7 @@ vars.put(&quot;id_duplicata_full&quot;, id_duplicata_full);</stringProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Transaction Create Teleport" enabled="false">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Transaction Create Teleport">
           <intProp name="HTTPSampler.connect_timeout">60000</intProp>
           <intProp name="HTTPSampler.response_timeout">60000</intProp>
           <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
@@ -384,8 +407,8 @@ vars.put(&quot;id_duplicata_full&quot;, id_duplicata_full);</stringProp>
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
   &quot;transaction&quot;: {&#xd;
-    &quot;to&quot;: null,&#xd;
-    &quot;data&quot;: &quot;${transaction_teleport}&quot;,&#xd;
+    &quot;to&quot;: &quot;${transaction_to}&quot;,&#xd;
+    &quot;data&quot;: &quot;${create_teleport_prefix}${id_duplicata_custom}&quot;,&#xd;
     &quot;value&quot;: &quot;0&quot;&#xd;
   },&#xd;
   &quot;walletId&quot;: &quot;${wallet_id}&quot;&#xd;
@@ -396,7 +419,7 @@ vars.put(&quot;id_duplicata_full&quot;, id_duplicata_full);</stringProp>
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="Content-Type" elementType="Header">
                 <stringProp name="Header.name">Content-Type</stringProp>
@@ -425,7 +448,7 @@ vars.put(&quot;id_duplicata_full&quot;, id_duplicata_full);</stringProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="txHashTeleport" enabled="false">
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="txHashTeleport">
             <stringProp name="JSONPostProcessor.referenceNames">txHashTeleport</stringProp>
             <stringProp name="JSONPostProcessor.jsonPathExprs">txHash</stringProp>
             <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
@@ -433,7 +456,7 @@ vars.put(&quot;id_duplicata_full&quot;, id_duplicata_full);</stringProp>
           </JSONPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Transaction Receipt Teleport By Hash" enabled="false">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Transaction Receipt Teleport By Hash">
           <intProp name="HTTPSampler.connect_timeout">60000</intProp>
           <intProp name="HTTPSampler.response_timeout">60000</intProp>
           <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
@@ -449,7 +472,7 @@ vars.put(&quot;id_duplicata_full&quot;, id_duplicata_full);</stringProp>
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="Content-Type" elementType="Header">
                 <stringProp name="Header.name">Content-Type</stringProp>
@@ -517,7 +540,7 @@ vars.put(&quot;id_duplicata_full&quot;, id_duplicata_full);</stringProp>
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
