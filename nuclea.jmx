@@ -27,7 +27,7 @@
           <collectionProp name="Arguments.arguments">
             <elementProp name="base_url" elementType="Argument">
               <stringProp name="Argument.name">base_url</stringProp>
-              <stringProp name="Argument.value">nuclea-custody-hsm.parfin.dev</stringProp>
+              <stringProp name="Argument.value">rayls-custody-hsm-1-96f2e47badd11b3c.elb.us-east-1.amazonaws.com</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="api_key" elementType="Argument">
@@ -37,17 +37,17 @@
             </elementProp>
             <elementProp name="protocol" elementType="Argument">
               <stringProp name="Argument.name">protocol</stringProp>
-              <stringProp name="Argument.value">https</stringProp>
+              <stringProp name="Argument.value">http</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="port" elementType="Argument">
               <stringProp name="Argument.name">port</stringProp>
-              <stringProp name="Argument.value">443</stringProp>
+              <stringProp name="Argument.value">80</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="transaction_to" elementType="Argument">
               <stringProp name="Argument.name">transaction_to</stringProp>
-              <stringProp name="Argument.value">0x81ED9c6776E28BB1eBB575CF8d051D097E34E457</stringProp>
+              <stringProp name="Argument.value">0x2b3546c11f26283fb28faccd59b8850038318949</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="create_duplicata_prefix" elementType="Argument">
@@ -201,7 +201,7 @@
           </JSONPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Wallet By Address">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Wallet By Address" enabled="true">
           <intProp name="HTTPSampler.connect_timeout">60000</intProp>
           <intProp name="HTTPSampler.response_timeout">60000</intProp>
           <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
@@ -246,7 +246,7 @@
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Transaction Create Duplicata">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Transaction Create Duplicata" enabled="true">
           <intProp name="HTTPSampler.connect_timeout">60000</intProp>
           <intProp name="HTTPSampler.response_timeout">60000</intProp>
           <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
@@ -344,7 +344,7 @@ vars.put(&quot;id_duplicata_full&quot;, id_duplicata_full);</stringProp>
           </JSR223PreProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Transaction Receipt Duplicata By Hash">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Transaction Receipt Duplicata By Hash" enabled="true">
           <intProp name="HTTPSampler.connect_timeout">60000</intProp>
           <intProp name="HTTPSampler.response_timeout">60000</intProp>
           <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
@@ -390,7 +390,7 @@ vars.put(&quot;id_duplicata_full&quot;, id_duplicata_full);</stringProp>
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Transaction Create Teleport">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Transaction Create Teleport" enabled="true">
           <intProp name="HTTPSampler.connect_timeout">60000</intProp>
           <intProp name="HTTPSampler.response_timeout">60000</intProp>
           <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
